@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="block">
+        <form action="/music/new" method="post"  enctype="multipart/form-data">
+            <input class="block" id="title" name="title" type="text" placeholder="Insert song name">
+            <input class="block" name="description" type="text" placeholder="Insert description">
+            <input class="block" name="artist" type="text" placeholder="Insert  artist">
+            <input class="block" name="file" type="file" accept=".mp3">
+            <!-- <input type="file" na> -->
+            <input type="submit" value="Insert a new song`">
+        </form>
+    </div>
+</body>
+</html>

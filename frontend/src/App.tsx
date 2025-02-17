@@ -3,8 +3,23 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import Navbar from './components/Navbar'
 import TopBar from './components/TopBar'
+import { PlayIcon, ProductLoadingIcon } from 'hugeicons-react'
 
 function App() {
+
+  const [showplay, setShowplay] = useState(false)
+
+  const topartists = [
+    { name: 'Drake', image: 'https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9'},
+    { name: 'Asake', image: 'https://i.scdn.co/image/ab67616100005174a3ae97af098bf3aeeb24d338'},
+    { name: 'Future', image: 'https://i.scdn.co/image/ab6761610000e5eb7565b356bc9d9394eefa2ccb'},
+    { name: 'Don Toliver', image: 'https://i.scdn.co/image/ab6761610000e5eb62d52993e245cb161f89b01c'},
+    { name: 'Kenrick Lamar', image: 'https://i.scdn.co/image/ab6761610000e5eb39ba6dcd4355c03de0b50918'},
+    { name: 'Bruno Mars', image: 'https://i.scdn.co/image/ab6761610000e5ebc36dd9eb55fb0db4911f25dd'},
+    { name: 'Taylor Swift', image: 'https://i.scdn.co/image/ab6761610000e5ebe672b5f553298dcdccb0e676'},
+    { name: 'Tyla', image: 'https://i.scdn.co/image/ab6761610000e5eba1fca104a7abe5a7031b887d'},
+  ]
+
 
   return (
     <>
@@ -17,12 +32,11 @@ function App() {
             <TopBar/>
             <div className="bg-black text-white min-h-screen pt-10">
             {/* Main Banner */}
-            <div className="relative bg-green-600 rounded-2xl h-60 p-4 flex items-center ">
-              {/* <div className="absolute right-0 top-0 transform translate-x-10 -translate-y-10 w-40 h-40 bg-red-500 rounded-full"></div> */}
-                <div className="absolute right-5 bottom-0 overflow-hidden h-80">
+            <div className="relative bg-gradient-to-t from-cyan-500 to-blue-700 rounded-2xl h-60 p-4 flex items-center">
+            <div className="absolute right-5 bottom-0 overflow-hidden h-80">
                   <img
                     src="https://s3-alpha.figma.com/hub/file/3245423817/2a6607b4-75c6-4a9f-8ded-fcd75be50101-cover.png"
-                    alt="Billie Eilish"
+                    alt="Drake"
                     className="w-[500px] rounded-lg object-cover"
                   />
                 </div>
@@ -42,7 +56,7 @@ function App() {
                 <button className="text-gray-400 hover:text-white">View all</button>
               </div>
 
-              <div className="flex gap-4 mt-4">
+              <div className="flex gap-4 mt-4 mb-7">
                 <img
                   src="https://via.placeholder.com/50"
                   alt="Playlist Name Cover"
@@ -53,7 +67,7 @@ function App() {
                   { title: "Dejavu", tracks: "30", image: "./dejavucover.png", color: "bg-yellow-500" },
                   { title: "Playlist of the day", tracks: "28", image: "./BTS-Background-PNG.png", color: "bg-blue-600" },
                   { title: "Something new", tracks: "37", image: "./cover.png", color: "bg-purple-600" },
-                  { title: "Afrobeat Sounds", tracks: "17", image: "./afrocover.png", color: "bg-green-600" },
+                  { title: "Afrobeat Sounds", tracks: "17", image: "./afrocover.png", color: "bg-cyan-600" },
                   { title: "Mega Hits", tracks: "10", image: "./covermega.png", color: "bg-red-600" },
                 ].map((playlist, index) => (
                   <div key={index}
@@ -71,6 +85,73 @@ function App() {
                     
                   </div>
                 ))}
+              </div>
+
+              <div className="flex justify-between items-center">
+                <h2 className="text-xl font-bold">Trending now</h2>
+                <button className="text-gray-400 hover:text-white">View all</button>
+              </div>
+
+              <div className="flex gap-4 mt-4 mb-5">
+                {[
+                  { id: 12, title: "Gimme Some Hug$", artists: "Drake & PARTYNEXTDOOR", image: "https://i.scdn.co/image/ab67656300005f1f0cde67312d43a3fb23089cdb", color: "border border-gray-100/20" },
+                  { id: 332, title: "Not Like Us", artists: "Kendrick Lamar", image: "https://i.scdn.co/image/ab67616d0000b2731ea0c62b2339cbf493a999ad", color: "border border-gray-100/20" },
+                  { id: 221, title: "Push 2 Start", artists: "Tyla", image: "https://i.scdn.co/image/ab67616d0000b27334d2121bebebc1e7d9a0c369", color: "border border-gray-100/20" },
+                  { id: 1344, title: "Beauty On fire", artists: "Bruce Melodie", image: "https://i.scdn.co/image/ab67616d0000b273bbe88b9d406048fd7e9f836c", color: "border border-gray-100/20" },
+                  { id: 422, title: "Kese", artists: "Wizkid", image: "https://i.scdn.co/image/ab67616d00001e025e9b08109120e18c41a7b3e2", color: "border border-gray-100/20" },
+                ].map((song, index) => (
+                  <div key={index} className={`  relative w-60 overflow-hidden`} >
+                    <div className={`${song.color} relative rounded-xl w-60 h-60 overflow-hidden mb-2`} onMouseOver={()=>setShowplay(true)} onMouseLeave={()=>{setShowplay(false)}}>
+                      <img 
+                        src={song.image} 
+                        alt={song.title}  
+                        className='w-full'
+                      />
+                      {showplay ? (
+                        <div key={song.id} className='absolute bottom-0 right-4 mb-5 bg-gradient-to-r  from-blue-800/80 border border-purple-400/70 to-purple-800 p-4 rounded-full'>
+                          <PlayIcon
+                            color='black'
+                            fill={'black'}
+                          />
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                    <div className=''>
+                      <p className="text-lg font-bold">{song.title}</p>
+                      <p className="text-[12px] text-gray-200">{song.artists}</p>
+                    </div>
+                    
+                  </div>
+                ))}
+              </div>
+
+              <div className='w-full'>
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-bold">Top Artists</h2>
+                  <button className="text-gray-400 hover:text-white">View all</button>
+                </div>
+
+                <div className='overflow-x-scroll'>
+                  <div className='flex flex-nowrap gap-3 min-w-max items-center'>
+                    {
+                      topartists.map((topartist, index)=>(
+                        <div key={index} className='text-center mb-3'> 
+                          <div className='w-60 mb-3 h-60 rounded-full overflow-hidden border border-gray-100/30'>
+                            <img 
+                              src={topartist.image} 
+                              alt={topartist.name} 
+                              className='w-full'
+                            />
+                          </div>
+                          <p className='text-md text-gray-200'>{topartist.name}</p>
+                        </div>
+                      ))
+                    }
+                    
+                  </div>
+                </div>
               </div>
             </div>
           </div>

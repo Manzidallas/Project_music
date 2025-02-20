@@ -5,8 +5,8 @@ import React, { useState } from 'react'
 const play = true
 // const [isplaying, setIsplaying] = useState(false)
 
-const [volume, setVolume] = useState(false)
-const [showvolume, setShowVolume] = useState(false)
+// const [volume, setVolume] = useState(false)
+// const [showvolume, setShowVolume] = useState(false)
 
 
 
@@ -16,7 +16,7 @@ const isplaying = false
 
 const Musicplaybar = () => {
   return (
-    <div className='bg-black py-4 flex items-center justify-between'>
+    <div className='bg-white/50 px-5 backdrop-blur-lg rounded-2xl py-4 flex items-center justify-between'>
       <div className='flex gap-2 items-center'>
         <img 
           src="https://i.scdn.co/image/ab67616d0000b2731ea0c62b2339cbf493a999ad" 
@@ -43,6 +43,7 @@ const Musicplaybar = () => {
               <PauseIcon 
                 className=''
                 size={42}
+                fill='#000'
               />  
               
             )
@@ -73,7 +74,7 @@ const Musicplaybar = () => {
       <div className='flex items-center gap-3'>
         <ShuffleIcon/>
         <Queue01Icon/>
-        <VolumeHighIcon onClick={()=>{setShowVolume(true)}}/>
+        <VolumeHighIcon/>
       </div>
     </div>
   )

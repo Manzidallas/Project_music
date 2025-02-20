@@ -48,7 +48,7 @@ function App() {
   return (
     <>
       {/* Sidebar */}
-      <div className="py-5 text-gray-300 h-[100vh] border border-black gap-2 flex bg-zinc-900">
+      <div className="relative py-5 text-gray-300 h-[100vh] border border-black gap-2 flex bg-zinc-900">
         <Navbar />
 
         <div className="bg-black w-[80%] rounded-4xl px-6 py-8">
@@ -262,9 +262,11 @@ function App() {
                 </div>
               </div>
             </div>
-            <Musicplaybar />
           </div>
         </div>
+      </div>
+      <div className="fixed z-100 bottom-5 mx-auto right-32 w-[75%] rounded-xl">
+        <Musicplaybar />
       </div>
     </>
   );

@@ -7,6 +7,7 @@ import { PlayIcon } from "hugeicons-react";
 import Musicplaybar from "./components/Musicplaybar";
 
 function App() {
+
   const [showplay, setShowplay] = useState(false);
 
   const topartists = [

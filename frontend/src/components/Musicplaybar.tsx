@@ -1,8 +1,14 @@
+import WavesurferPlayer from '@wavesurfer/react'
 import { NextIcon, PauseIcon, PlayIcon, PreviousIcon, Queue01Icon, ShuffleIcon, VolumeHighIcon } from 'hugeicons-react'
 import React, { useState } from 'react'
 
 const play = true
 // const [isplaying, setIsplaying] = useState(false)
+
+const [volume, setVolume] = useState(false)
+const [showvolume, setShowVolume] = useState(false)
+
+
 
 const isplaying = false
 
@@ -24,7 +30,7 @@ const Musicplaybar = () => {
       </div>
 
       <div className='flex gap-3 items-center'>
-        <div className='flex gap-3 items-center'>
+        <div className='flex gap-3 items-center mr-10'>
           <PreviousIcon/>
           {/* <button onClick={()=>setIsplaying(!isplaying)}> */}
             {isplaying ? (
@@ -46,9 +52,19 @@ const Musicplaybar = () => {
           <NextIcon/>
         </div>
 
-        <div className='flex gap-2'>
-          <div>
-            <input type="range" />
+        <div className='flex gap-10 items-center'>
+          <div className='w-80'>
+            {/* <input type="range" /> */}
+            <WavesurferPlayer
+              height={60}
+              url='./music/Asake - Organise.mp3'
+              autoplay
+              progressColor={'yellow'}
+              barGap={4}
+              barRadius={10}
+              barWidth={3}
+              // barRadius={100}
+            />
           </div>
           <p>03:12</p>
         </div>
@@ -57,7 +73,7 @@ const Musicplaybar = () => {
       <div className='flex items-center gap-3'>
         <ShuffleIcon/>
         <Queue01Icon/>
-        <VolumeHighIcon/>
+        <VolumeHighIcon onClick={()=>{setShowVolume(true)}}/>
       </div>
     </div>
   )

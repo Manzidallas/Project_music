@@ -8,7 +8,7 @@ import Musicplaybar from "./components/Musicplaybar";
 
 function App() {
 
-  const [showplay, setShowplay] = useState(false);
+  const [showplay, setShowplay] = useState();
 
   const topartists = [
     {
@@ -202,17 +202,16 @@ function App() {
                     >
                       <div
                         className={`${song.color} relative rounded-xl w-60 h-60 overflow-hidden mb-2`}
-                        onMouseOver={() => setShowplay(true)}
-                        onMouseLeave={() => {
-                          setShowplay(false);
-                        }}
+                        onMouseOver={() => setShowplay(index)}
+                        onMouseLeave={() => setShowplay(null)}
+                        
                       >
                         <img
                           src={song.image}
                           alt={song.title}
                           className="w-full"
                         />
-                        {showplay ? (
+                        {showplay === index ? (
                           <div
                             key={index}
                             className="absolute bottom-0 right-4 mb-5 bg-gradient-to-r  from-blue-800/80 border border-purple-400/70 to-purple-800 p-4 rounded-full"

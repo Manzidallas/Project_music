@@ -1,20 +1,25 @@
 import WavesurferPlayer from '@wavesurfer/react'
 import { NextIcon, PauseIcon, PlayIcon, PreviousIcon, Queue01Icon, ShuffleIcon, VolumeHighIcon } from 'hugeicons-react'
-import React, { useState } from 'react'
-
-const play = true
-// const [isplaying, setIsplaying] = useState(false)
-
-// const [volume, setVolume] = useState(false)
-// const [showvolume, setShowVolume] = useState(false)
-
-
-
-const isplaying = false
-
-// setIsplaying(!isplaying)
+import  { useState } from 'react'
 
 const Musicplaybar = () => {
+  
+  const [volume, setVolume] = useState(false)
+  const [showvolume, setShowVolume] = useState(false)
+  const [isplaying, setIsplaying] = useState(false)
+  const [time, setTime] = useState('')
+  const [wavesurfer, setWavesurfer] = useState(null)
+
+  const onReady = (ws) => {
+    setWavesurfer(ws)
+    setIsplaying(false)
+  }
+
+  const onPlayPause = () => {
+    wavesurfer && wavesurfer.playPause()
+    setTime(wavesurfer.getCurrentTime())
+  }
+
   return (
     <div className='bg-white/50 px-5 backdrop-blur-lg rounded-2xl py-4 flex items-center justify-between'>
       <div className='flex gap-2 items-center'>
@@ -32,42 +37,48 @@ const Musicplaybar = () => {
       <div className='flex gap-3 items-center'>
         <div className='flex gap-3 items-center mr-10'>
           <PreviousIcon/>
-          {/* <button onClick={()=>setIsplaying(!isplaying)}> */}
-            {isplaying ? (
-              <PlayIcon 
-                className=''
-                size={42}
-              />  
-            ) :
-            (
-              <PauseIcon 
-                className=''
-                size={42}
-                fill='#000'
-              />  
-              
-            )
-
+          <button onClick={()=>onPlayPause()}>
+            {
+              !isplaying ? (
+                <PlayIcon 
+                  className=''
+                  size={42}
+                  fill='#000'
+                />  
+              ) :
+              (
+                <PauseIcon 
+                  className=''
+                  size={42}
+                  fill='#000'
+                />  
+                
+              )
             }
-          {/* </button> */}
+          </button> 
           <NextIcon/>
         </div>
 
         <div className='flex gap-10 items-center'>
           <div className='w-80'>
-            {/* <input type="range" /> */}
             <WavesurferPlayer
               height={60}
-              url='./music/Asake - Organise.mp3'
-              autoplay
+              url='./music/Kendrick Lamar - Not Like Us.mp3'
+              onReady={onReady}
               progressColor={'yellow'}
               barGap={4}
               barRadius={10}
               barWidth={3}
-              // barRadius={100}
+              cursorColor='#000'
+              cursorWidth={0}
+              onPlay={()=>{setIsplaying(true)}}
+              onPause={()=>{setIsplaying(false)}}
             />
           </div>
-          <p>03:12</p>
+          <div className='flex'>
+            <p>{Math.floor(time / 60)}</p>:
+            <p>{('0' + Math.floor(time % 60)).slice(-2)}</p>
+          </div>
         </div>
       </div>
 

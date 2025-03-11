@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import reactLogo from './assets/react.svg'
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TopBar from "./components/TopBar";
 import { PlayIcon } from "hugeicons-react";
 import Musicplaybar from "./components/Musicplaybar";
+import Createsong from "./components/model/addsong";
 
 function App() {
 
+  const [currentSong, setCurrentSong] = useState(null)
   const [showplay, setShowplay] = useState();
+
+  const handlePlaySong = (song) => {
+    setCurrentSong({
+      title: song.title,
+      artist: song.artists,
+      coverArt: song.image,
+      songurl: song.songUrI,
+    });}
+
 
   const topartists = [
     {
@@ -49,6 +60,7 @@ function App() {
     <>
       {/* Sidebar */}
       <div className="relative py-5 text-gray-300 h-[100vh] border border-black gap-2 flex bg-zinc-900">
+    {/* <Createsong/> */}
         <Navbar />
 
         <div className="bg-black w-[80%] rounded-4xl px-6 py-8">
@@ -156,25 +168,26 @@ function App() {
                       artists: "Drake & PARTYNEXTDOOR",
                       image:
                         "https://i.scdn.co/image/ab67656300005f1f0cde67312d43a3fb23089cdb",
-                      src: "",
+                      songUrI: "./music/Drake PARTYNEXTDOOR  GIMME A HUG.mp3",
                       color: "border border-gray-100/20",
                     },
                     {
                       id: 332,
                       title: "Not Like Us",
                       artists: "Kendrick Lamar",
+                      song_url: '',
                       image:
                         "https://i.scdn.co/image/ab67616d0000b2731ea0c62b2339cbf493a999ad",
-                      src: "",
+                      songUrI: "./music/Kendrick Lamar - Not Like Us.mp3",
                       color: "border border-gray-100/20",
                     },
                     {
                       id: 221,
-                      title: "Push 2 Start",
-                      artists: "Tyla",
+                      title: "GBP (feat. 21 Savage)",
+                      artists: "Central Cee",
                       image:
-                        "https://i.scdn.co/image/ab67616d0000b27334d2121bebebc1e7d9a0c369",
-                      src: "",
+                        "https://i.scdn.co/image/ab67616d0000b273d531f45a2948d22e5c5ff66f",
+                      songUrI: "./music/gbp.mp3",
                       color: "border border-gray-100/20",
                     },
                     {
@@ -183,7 +196,7 @@ function App() {
                       artists: "Bruce Melodie",
                       image:
                         "https://i.scdn.co/image/ab67616d0000b273bbe88b9d406048fd7e9f836c",
-                      src: "",
+                      songUrI: "./music/beauty on fire.mp3",
                       color: "border border-gray-100/20",
                     },
                     {
@@ -192,7 +205,7 @@ function App() {
                       artists: "Wizkid",
                       image:
                         "https://i.scdn.co/image/ab67616d00001e025e9b08109120e18c41a7b3e2",
-                      src: "",
+                      songUrI: "./music/kese.mp3",
                       color: "border border-gray-100/20",
                     },
                   ].map((song, index) => (
@@ -216,7 +229,9 @@ function App() {
                             key={index}
                             className="absolute bottom-0 right-4 mb-5 bg-gradient-to-r  from-blue-800/80 border border-purple-400/70 to-purple-800 p-4 rounded-full"
                           >
-                            <PlayIcon color="black" fill={"black"} />
+                            <PlayIcon color="black" fill={"black"} 
+                              onClick={() =>{ handlePlaySong(song); console.log(song)}}
+                            />
                           </div>
                         ) : (
                           <></>
@@ -265,7 +280,13 @@ function App() {
         </div>
       </div>
       <div className="fixed z-100 bottom-5 mx-auto right-32 w-[75%] rounded-xl">
-        <Musicplaybar />
+        <Musicplaybar
+          id= {currentSong?.id}
+          title={currentSong?.title}
+          artist={currentSong?.artist}
+          coverArt={currentSong?.coverArt}
+          songurl={currentSong?.songurl}
+        />
       </div>
     </>
   );

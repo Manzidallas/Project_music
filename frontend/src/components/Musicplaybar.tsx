@@ -93,8 +93,7 @@ const Musicplaybar = ({ id, title, artist, coverArt, songurl }) => {
   // Wavesurfer setup
   const onReady = (ws) => {
     setWavesurfer(ws);
-    setIsplaying(false); // Reset to paused state
-    setTime(0); // Reset time
+    setTime(0); 
   };
 
   // Update time during playback

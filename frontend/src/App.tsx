@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-// import reactLogo from './assets/react.svg'
+// import reactLogo from './assets/react.svg' 
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TopBar from "./components/TopBar";
 import { PlayIcon } from "hugeicons-react";
 import Musicplaybar from "./components/Musicplaybar";
 import Createsong from "./components/model/addsong";
+import { useSong } from "./musicContext";
 
 function App() {
 
-  const [currentSong, setCurrentSong] = useState(null)
+  const {currentSong, setCurrentSong} = useSong();
   const [showplay, setShowplay] = useState();
 
   const handlePlaySong = (song) => {
@@ -39,7 +40,7 @@ function App() {
       image: "https://i.scdn.co/image/ab6761610000e5eb62d52993e245cb161f89b01c",
     },
     {
-      name: "Kenrick Lamar",
+      name: "Kendrick Lamar",
       image: "https://i.scdn.co/image/ab6761610000e5eb39ba6dcd4355c03de0b50918",
     },
     {
@@ -227,11 +228,10 @@ function App() {
                         {showplay === index ? (
                           <div
                             key={index}
+                            onClick={() =>{ handlePlaySong(song); console.log(song)}}
                             className="absolute bottom-0 right-4 mb-5 bg-gradient-to-r  from-blue-800/80 border border-purple-400/70 to-purple-800 p-4 rounded-full"
                           >
-                            <PlayIcon color="black" fill={"black"} 
-                              onClick={() =>{ handlePlaySong(song); console.log(song)}}
-                            />
+                            <PlayIcon color="black" fill={"black"} />
                           </div>
                         ) : (
                           <></>
@@ -279,6 +279,7 @@ function App() {
           </div>
         </div>
       </div>
+      
       <div className="fixed z-100 bottom-5 mx-auto right-32 w-[75%] rounded-xl">
         <Musicplaybar
           id= {currentSong?.id}

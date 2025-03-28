@@ -122,7 +122,7 @@ const Musicplaybar = ({ id, title, artist, coverArt, songurl }) => {
         ],
       });
     }})
-
+    console.log(playlist);
 
   return (
     <div className="bg-white/50 px-5 relative backdrop-blur-lg rounded-2xl py-4 flex items-center justify-between">

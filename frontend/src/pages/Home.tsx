@@ -2,6 +2,10 @@ import { PlayIcon } from 'hugeicons-react';
 import React from 'react'
 
 const Home = () => {
+
+
+
+  
     
   const topartists = [
     {

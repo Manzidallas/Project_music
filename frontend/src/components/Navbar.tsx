@@ -1,8 +1,9 @@
 // import React from 'react'
+import { Link } from 'react-router-dom'
 import viteLogo from '/vite.svg'
 import { Add01Icon, FireIcon, Home01Icon, Logout02Icon, Playlist01Icon, Setting07Icon } from 'hugeicons-react'
 
-const Navbar = () => {
+const Sidebar = () => {
   return (
     <div className='bg-black w-70 h-full rounded-4xl ml-5 p-5 relative'>
           <nav>
@@ -13,22 +14,22 @@ const Navbar = () => {
 
             <ul>
               <li>
-                <div className='flex gap-2 items-center text-white py-3 bg-gray-400/30 rounded-xl backdrop-blur-md px-3 mb-3'>
+                <Link to='/' className='flex gap-2 items-center text-white py-3 bg-gray-400/30 rounded-xl backdrop-blur-md px-3 mb-3'>
                   <Home01Icon/>
                   <h1>Home</h1>
-                </div>
+                </Link>
               </li>
               <li>
-                <div className='flex gap-3 items-center py-3 bg-gray-400/30 rounded-xl backdrop-blur-md px-3 mb-3'>
+                <Link to='/playlist' className='flex gap-3 items-center py-3 bg-gray-400/30 rounded-xl backdrop-blur-md px-3 mb-3'>
                   <Playlist01Icon />
                   <h1>Playlists</h1>
-                </div>
+                </Link>
               </li>
               <li>
-                <div className='flex gap-3 items-center py-3 bg-gray-400/30 rounded-xl backdrop-blur-md px-3 mb-3'>
+                <Link to='/popular' className='flex gap-3 items-center py-3 bg-gray-400/30 rounded-xl backdrop-blur-md px-3 mb-3'>
                   <FireIcon/>
                   <h1>Popular</h1>
-                </div>
+                </Link>
               </li>
 
               <li>
@@ -61,4 +62,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Sidebar

@@ -20,11 +20,12 @@ function App() {
   return (
     <>
       {/* Sidebar */}
-      <div className="relative py-5 text-gray-300 h-[100vh] border border-black gap-2 flex bg-zinc-900">
-    {/* <Createsong/> */}
+      {/* <div className="bg-black w-[80%] rounded-4xl px-6 py-8 "></div> */}
+      <div className="relative py-5 text-gray-300 h-[100vh]  border border-black gap-2 flex bg-zinc-900">
+        {/* <Createsong/> */}
         <Sidebar />
 
-        <div className="bg-black w-[80%] rounded-4xl px-6 py-8">
+        <div className="bg-black w-[80%] rounded-4xl px-6 py-8 overflow-y-auto max-h-full">
           <div>
             <TopBar />
               <Routes>
@@ -34,8 +35,6 @@ function App() {
                 <Route path="/album/:id" element={<Album/>} />
                 <Route path="/search" element={<Search/>} />
               </Routes>
-            
-
           </div>
         </div>
       </div>

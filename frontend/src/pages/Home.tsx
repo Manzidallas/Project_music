@@ -1,10 +1,10 @@
 import { PlayIcon } from "hugeicons-react";
 import React, { useState } from "react";
 import { useSong } from "../musicContext";
+// import 
 
 const Home = () => {
-
-  const {currentSong, setCurrentSong} = useSong();
+  const { currentSong, setCurrentSong } = useSong();
   const [showplay, setShowplay] = useState();
 
   const handlePlaySong = (song) => {
@@ -13,7 +13,8 @@ const Home = () => {
       artist: song.artists,
       coverArt: song.image,
       songurl: song.songUrI,
-    });}
+    });
+  };
 
   const topartists = [
     {
@@ -49,6 +50,7 @@ const Home = () => {
       image: "https://i.scdn.co/image/ab6761610000e5eba1fca104a7abe5a7031b887d",
     },
   ];
+
   return (
     <div className="bg-black text-white min-h-screen pt-10">
       {/* Main Banner */}
@@ -60,6 +62,7 @@ const Home = () => {
             className="w-[500px] rounded-lg object-cover"
           />
         </div>
+
         <div>
           <h2 className="text-xl font-semibold">PARTYNEXTDOOR & DRAKE</h2>
           <p className="text-3xl font-bold">GIMME A HUG</p>
@@ -67,7 +70,6 @@ const Home = () => {
             Listen now
           </button>
         </div>
-        {/* </div> */}
       </div>
       <div className="mt-6">
         <div className="flex justify-between items-center">
@@ -76,7 +78,6 @@ const Home = () => {
         </div>
 
         <div className="flex gap-4 mt-4 mb-7">
-
           {[
             {
               title: "Dejavu",

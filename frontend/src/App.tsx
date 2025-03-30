@@ -11,6 +11,7 @@ import { Route, Routes } from "react-router-dom";
 import Search from "./pages/Search";
 import Playlist from "./pages/Playlist";
 import Album from "./pages/Album";
+import Trending from "./pages/Trending";
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path="/playlist" element={<Playlist/>} />
-                {/* <Route path="/playlist/:name" element={<Playlist/>} /> */}
+                <Route path="/popular" element={<Trending/>} />
                 <Route path="/album/:id" element={<Album/>} />
                 <Route path="/search" element={<Search/>} />
               </Routes>
